@@ -78,3 +78,23 @@ suspend the virtual machine. In either case, to restart it again,
 simply run `vagrant up`.
 ```
 # 2. Repackaging
+
+🌞 Repackager la box que vous avez choisie
+```
+vagrant package --output super_box.box
+vagrant box add super_box super_box.box
+```
+🌞 Ecrivez un Vagrantfile qui lance une VM à partir de votre Box
+```
+Vagrant.configure("2") do |config|
+  config.vm.box = "super_box"
+  config.vm.box_version = "0"
+  config.vm.box_check_update = false 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+end
+```
+# 3. Moult VMs
+🌞 Adaptez votre Vagrantfile pour qu'il lance les VMs suivantes (en réutilisant votre box de la partie précédente)
+
+[Lien vers Vagrantfile-3A](partie1/Vagrantfile-3A)
+[Lien vers Vagrantfile-3B](partie1/Vagrantfile-3B)
