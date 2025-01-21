@@ -97,4 +97,5 @@ end
 🌞 Adaptez votre Vagrantfile pour qu'il lance les VMs suivantes (en réutilisant votre box de la partie précédente)
 
 [Lien vers Vagrantfile-3A](partie1/Vagrantfile-3A)  
+
 [Lien vers Vagrantfile-3B](partie1/Vagrantfile-3B)
