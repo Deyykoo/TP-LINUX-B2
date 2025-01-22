@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  python_app:
+    image: python_app_tp2
+    build: ./
+
+  conmysql:
+    image: mysql
+    volumes:
+      - ./pythonApp/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    environment:
+      - MYSQL_ROOT_PASSWORD=ceunmdp
+
+  phpAdmin:
+    image: phpmyadmin
+    ports: 
+      - 8081:80
+    environment:
+      PMA_HOST: conmysql
+
+  cnginx:
+    image: nginx
