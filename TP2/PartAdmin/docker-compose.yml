@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  web:
+    image: python_app
+    build: . 
+    environment:
+      PORT: 80
+      DB_HOST: "mysql"
+    expose:
+      - "80"
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./seed.sql:/docker-entrypoint-initdb.d/seed.sql
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+    expose:
+      - "80"
+  nginx:
+    image: nginx
+    build: ../TP_admin/
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - 80:80
+    depends_on:
+      - web
+      - phpmyadmin
