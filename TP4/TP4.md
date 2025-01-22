@@ -130,4 +130,3 @@ System clock synchronized: yes
               NTP service: active
           RTC in local TZ: no
 ```
-# IV. Gestion de service
